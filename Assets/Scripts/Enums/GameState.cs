@@ -4,8 +4,5 @@ public enum GameState
     GetReady,
     LevelRunning,
     LevelWon,
-
-    LevelLost,
-    LevelMenu,
-    GameOver,
+    LevelLost
 }

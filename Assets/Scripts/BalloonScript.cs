@@ -13,31 +13,29 @@ public class BalloonScript : MonoBehaviour
     [SerializeField] private AnimationCurve balloonUpCurve;
     [SerializeField] private AnimationCurve balloonDownCurve;
 
+    private Coroutine scale;
     private bool active = true;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        StartCoroutine(scaleBalloon());
+        GameManager.StateChanged += GameStateChanged;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // //Detect Click
-        // if(Input.GetMouseButtonDown(0))
-        // {
-        //     if(active)
-        //     {
-        //         StopCoroutine(scaleBalloon());
-        //         StopAllCoroutines();
-        //     }
-        //     else {
-        //         StartCoroutine(scaleBalloon());
-        //     }
-        //     active = !active;
-        // }
+
     }
 
+    private void GameStateChanged()
+    {
+        if(GameManager.Instance.GameState == GameState.MainMenu)
+        {
+            scale = StartCoroutine(scaleBalloon());
+        }else{
+            StopCoroutine(scale);
+        }
+    }
     private IEnumerator scaleBalloon()
     {
         float time = 0, scale;
