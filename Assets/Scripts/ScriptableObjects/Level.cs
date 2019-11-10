@@ -6,8 +6,16 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
     public int levelNumber;
-    public int levelScoreTarget;
-    public LaunchInfo[] launchInfos; 
+    public float scaleRate;
+    public float deScaleRate;
 
-    public float ringHeight;
+    public Color balloonColor;
+
+    public float targetScale;
+
+    public float targetThreshold;
+
+    public Vector3 startScale;
+
+    public Vector3 startPosition;
 }

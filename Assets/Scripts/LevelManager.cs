@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
 
     public static event Action<int> LevelChanged = delegate { };
 
+    [SerializeField] private GameLevels gameLevels;
     private void Awake()
     {
         if (_instance == null)
@@ -43,4 +44,13 @@ public class LevelManager : MonoBehaviour
         return level;
     }
 
+    public float getScaleSpeed()
+    {
+        return 0;
+    }
+
+    public Level getCurrentLevel()
+    {
+        return gameLevels.getLevelData(level);
+    }
 }

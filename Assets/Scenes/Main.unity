@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62db43118a873704892d7654cd1bd78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testLevel: 2
 --- !u!4 &46604375
 Transform:
   m_ObjectHideFlags: 0
@@ -479,6 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3977960a1a56164dbe0b54643249453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenState: 1
 --- !u!4 &314884800
 Transform:
   m_ObjectHideFlags: 0
@@ -717,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f2ffd84c984944099c4c3cc8a8e37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLevels: {fileID: 11400000, guid: 5f9a0090899c634468a4c50c54ce9d93, type: 2}
 --- !u!4 &634356567
 Transform:
   m_ObjectHideFlags: 0
@@ -1173,7 +1176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1126762900
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1398,7 +1401,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.45
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
@@ -1448,12 +1451,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 46.22
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 7.53
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
@@ -1533,7 +1536,32 @@ PrefabInstance:
     - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6751568282215805049, guid: 190901001e9d7e34fbdfdd24049a743c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8208016777704099116, guid: 190901001e9d7e34fbdfdd24049a743c,
         type: 3}
@@ -1644,6 +1672,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  startPosition: {x: 0, y: 0, z: 0}
+  yScaleOffset: -0.32
+  balloonObject: {fileID: 2139327523}
 --- !u!54 &1164816492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1769,7 +1800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1445930048
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2245,3 +2276,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2139327523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5267479014276825869, guid: 190901001e9d7e34fbdfdd24049a743c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1164816489}
+  m_PrefabAsset: {fileID: 0}

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance {get {return _instance;}}
     public GameState GameState {get{return _gameState;}}
     
+    [SerializeField] private int testLevel;
     public static event Action StateChanged = delegate { };
     private void Awake()
     {
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerData getPlayerData()
     {
-        return new PlayerData(1);
+        return new PlayerData(testLevel);
         //return SaveSystem.LoadLevel();
     }
 
