@@ -45,6 +45,7 @@ public class InputManager : MonoBehaviour
         {
             if (GameManager.Instance.GameState == GameState.LevelRunning)
             {
+                print("Uncliked");
                 ScreenUp();
                 screenState = ScreenState.ScreenUp;
             }

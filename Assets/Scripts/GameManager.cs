@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.LevelLost += LevelLost;
         LevelManager.LevelWon += LevelWon;
+        LevelManager.Instance.setupLevel();
         StateChanged();
     }
 

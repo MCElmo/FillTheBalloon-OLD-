@@ -28,13 +28,13 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    void Start()
+
+    public void setupLevel()
     {
         PlayerData data = GameManager.Instance.getPlayerData();
         level = data.level;
         LevelChanged(level);
     }
-
     void Update()
     {
         
@@ -52,5 +52,15 @@ public class LevelManager : MonoBehaviour
     public Level getCurrentLevel()
     {
         return gameLevels.getLevelData(level);
+    }
+
+    public void lostLevel()
+    {
+        LevelLost(level);
+    }
+
+    public void wonLevel()
+    {
+        LevelWon(level);
     }
 }

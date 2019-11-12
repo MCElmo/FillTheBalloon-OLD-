@@ -17,6 +17,6 @@ MonoBehaviour:
   deScaleRate: 1
   balloonColor: {r: 0.14391243, g: 0.744856, b: 0.9245283, a: 0}
   targetScale: 3.5
-  targetThreshold: 0.2
+  targetThreshold: 1.02
   startScale: {x: 1.27, y: 1.12, z: 1}
   startPosition: {x: 0, y: 7.1, z: 0}

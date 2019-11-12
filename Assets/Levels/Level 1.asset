@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   levelNumber: 1
-  scaleRate: 1
+  scaleRate: 5
   deScaleRate: 1
   balloonColor: {r: 1, g: 0, b: 0, a: 0.9019608}
   targetScale: 3.5
-  targetThreshold: 0.2
+  targetThreshold: 1.02
   startScale: {x: 1, y: 1, z: 1}
   startPosition: {x: 0, y: 7, z: 0}
