@@ -6,10 +6,14 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
     public int levelNumber;
+
+    public float winZone;
     public float scaleRate;
     public float deScaleRate;
 
     public Color balloonColor;
+
+    public float intensity;
 
     public float targetScale;
 

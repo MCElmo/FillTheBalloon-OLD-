@@ -6,10 +6,12 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     private static LevelManager _instance;
-    public static LevelManager Instance { get {return _instance;}}
+    public static LevelManager Instance { get { return _instance; } }
+
 
     private int level;
     public static event Action<int> LevelWon = delegate { };
+    public static event Action<float> PercentageUpdated = delegate { };
     public static event Action<int> LevelLost = delegate { };
 
     public static event Action<int> LevelChanged = delegate { };
@@ -37,7 +39,7 @@ public class LevelManager : MonoBehaviour
     }
     void Update()
     {
-        
+
     }
     public int getLevel()
     {
@@ -62,5 +64,10 @@ public class LevelManager : MonoBehaviour
     public void wonLevel()
     {
         LevelWon(level);
+    }
+
+    public void updatePercent(float percent)
+    {
+        PercentageUpdated(percent);
     }
 }

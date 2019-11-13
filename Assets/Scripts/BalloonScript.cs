@@ -7,8 +7,11 @@ public class BalloonScript : MonoBehaviour
 {
     [SerializeField] private float maxScale = 5f;
     [SerializeField] private float scaleTime = 5f;
+    [SerializeField] private float gameDescaleSpeed = 5f;
+
     [SerializeField] private float minScale = 2;
 
+    [Tooltip("Descale time while in Game")]
     [SerializeField] private float stayScaledTime = 5f;
 
     [SerializeField] private AnimationCurve balloonUpCurve;
@@ -19,6 +22,7 @@ public class BalloonScript : MonoBehaviour
 
     [SerializeField] GameObject balloonObject;
     private Coroutine scale;
+
     private bool active = true;
     // Start is called before the first frame update
 
@@ -61,7 +65,8 @@ public class BalloonScript : MonoBehaviour
         gameObject.transform.localPosition = level.startPosition;
         gameObject.transform.localScale = level.startScale;
         balloonObject.GetComponent<Renderer>().material.color = level.balloonColor;
-        balloonObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", level.balloonColor);
+        balloonObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", level.balloonColor * level.intensity);
+        LevelManager.Instance.updatePercent(0);
     }
 
     private IEnumerator levelScale()
@@ -69,61 +74,60 @@ public class BalloonScript : MonoBehaviour
         float scale = 0;
         while (true)
         {
+            print(InputManager.Instance.screenState);
             if (InputManager.Instance.screenState == ScreenState.ScreenDown)
-            {  
-                print("scren down");
+            {
                 scale = level.scaleRate * Time.deltaTime;
+                gameObject.transform.localScale += new Vector3(scale, scale, scale);
             }
             else if (InputManager.Instance.screenState == ScreenState.ScreenUp)
             {
                 //Print out the progress
-                float currentScale;
-                float minScale;
-                float maxScale;
-                float percentage;
-                /*
-                    1.)Get Current scale
-                    2.) get Minimum Scale
-                    3.) Get Max scale
-                    4.) Calculate total scale increase necessary
-                    5.) Subtract min scale from current scale
-                    6.) Print (5) / (4)
-                */
+                float currentScale, minScale, maxScale, percentage;
                 currentScale = gameObject.transform.localScale.x;
                 minScale = level.startScale.x;
                 maxScale = level.targetScale;
                 percentage = ((currentScale - minScale) / (maxScale - minScale)) * 100;
-                print(percentage + "%");
-
                 //Reset the position
-                gameObject.transform.localScale = level.startScale;
-
                 //If progress is good, call level won
-                if(percentage > 99.5)
+                if (percentage > level.winZone)
                 {
-                    LevelManager.Instance.wonLevel();
+                    //LevelManager.Instance.wonLevel();
+                   // StopAllCoroutines();
                 }
-
-/*
-                print("screen up");
-                //Check if at bottom
-                if(gameObject.transform.localScale.x <= level.startScale.x)
+                if(gameObject.transform.localScale != level.startScale)
                 {
-                    gameObject.transform.localScale = level.startScale;
-                    scale = 0;
-                }else{
-                    scale = -level.deScaleRate * Time.deltaTime;
-                }*/
+                    yield return StartCoroutine(descale(percentage));
+                }
             }
-            gameObject.transform.localScale += new Vector3(scale,scale,scale);
-            if(gameObject.transform.localScale.x >= level.targetScale * level.targetThreshold)
+            if (gameObject.transform.localScale.x >= level.targetScale * level.targetThreshold)
             {
                 LevelManager.Instance.lostLevel();
-                print("You fucked up");
             }
             yield return null;
         }
     }
+
+    private IEnumerator descale(float percentage)
+    {
+        LevelManager.Instance.updatePercent(percentage);
+        float descale = 0;
+        while (true)
+        {
+            descale = Time.deltaTime * gameDescaleSpeed;
+            if (gameObject.transform.localScale.x > level.startScale.x)
+            {
+                gameObject.transform.localScale -= new Vector3(descale, descale, descale);
+            }
+            else
+            {
+                gameObject.transform.localScale = level.startScale;
+                break;
+            }
+            yield return new WaitForSeconds(0.001f);
+        }
+    }
+
     private IEnumerator bounceMenu()
     {
         float time = 0, scale;
